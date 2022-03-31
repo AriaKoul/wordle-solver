@@ -8,17 +8,13 @@ def generate_word():
     """
     # Make a list of all possible five letter words in the English language
     five_letter_words = []
-    for a_word in english_words_set:
-        if len(a_word) == 5:
-            five_letter_words.append(a_word)
-    
-    # Check if any word is a proper noun and remove it from the list of possible five letter words
-    for word in five_letter_words:
-        if word[0].isupper():
-            five_letter_words.remove(word)
+    for word in english_words_set:
+        if len(word) == 5 and word[0].islower():
+            five_letter_words.append(word)
     
     # Pick a random five letter word to be the solution 
     solution = random.choice(five_letter_words)
+    print(solution)
     
     return solution
 
