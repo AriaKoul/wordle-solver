@@ -16,7 +16,6 @@ def generate_list():
     
     return five_letter_words
 
-
 def generate_word():
     """
     Generates and returns a random five letter word in the English language.
@@ -25,6 +24,7 @@ def generate_word():
 
     # Pick a random five letter word to be the solution 
     solution = random.choice(generate_list())
+    print(solution)
     return solution
 
 def word_guess():
@@ -59,7 +59,7 @@ def score_guess(solution, guess):
             result += 'Y'
         else:
             result += 'R'
-
+    print(result)
     return result
 
 
@@ -85,3 +85,6 @@ def generate_best_guesses(word_list):
     best_guesses = []
     # for word in 
     return best_guesses 
+
+  
+score_guess(generate_word(), word_guess()) 
