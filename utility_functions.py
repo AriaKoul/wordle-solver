@@ -16,9 +16,10 @@ def generate_list():
     
     return five_letter_words
 
+
 def generate_word():
     """
-    Generates a random five letter word in the English language.
+    Generates and returns a random five letter word in the English language.
     This five letter word is the solution to the game. 
     """
 
@@ -28,7 +29,7 @@ def generate_word():
 
 def word_guess():
     """
-    Gets user's guess for what the solution could be.
+    Gets user's guess for what the solution could be and returns it.
     Asks for another input if the user's guess doesn't satisfy the following two conditions:
         1) Length of the word is five letters
         2) Word is in the list five_letter_words (is real and isn't a proper noun)
@@ -48,6 +49,7 @@ def score_guess(solution, guess):
         R - character is not in the word
         Y - character is in the word but in the wrong spot
         G - character is in the word and in the right spot
+    Returns the result in string form.
     """
     result = ''
     for i in range(len(solution)):
@@ -62,7 +64,14 @@ def score_guess(solution, guess):
 
 
 def generate_possible_solutions(guess_history):
-    # guess_history is a dictionary with a structure {"guess": "result"}
+    """
+    Takes the guess history of the user, which is a dictionary that has the following
+    strucuture: {"guess": "result"}.
+    Based on the result and the guess, this function generates all possible words that 
+    do not violate the criterion from the most recent guess and returns all of these possible 
+    words as a list.
+    """
+    
     possible_solutions = generate_list()
     # Iterate over items in guess history to remove invalid words from possible solutions
     return possible_solutions
@@ -70,9 +79,9 @@ def generate_possible_solutions(guess_history):
 def generate_best_guesses(word_list):
     """
     This function takes a list of words and returns all the words with the maximum amount of 
-    unique letters.
+    unique letters. This is done in order to generate a list of the best possible guesses that
+    could lead the user to eventually getting the solution. 
     """
     best_guesses = []
     # for word in 
     return best_guesses 
-
