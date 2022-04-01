@@ -7,6 +7,7 @@ def generate_word():
     This five letter word is the solution to the game. 
     """
     # Make a list of all possible five letter words in the English language
+    global five_letter_words
     five_letter_words = []
     for word in english_words_set:
         if len(word) == 5 and word[0].islower():
@@ -18,11 +19,23 @@ def generate_word():
     
     return solution
 
-def word_guess():
+def word_guess(five_letter_words):
     """
     Gets user's guess for what the solution could be.
+    Asks for another input if the user's guess doesn't satisfy the following two conditions:
+        1) Length of the word is five letters
+        2) Word is in the list five_letter_words (is real and isn't a proper noun)
     """
-    return
+    # Gets user input
+    guess = input('Enter your five-letter word guess here: ')
+
+    # Checks that user's input satisfies all requirements and if not, asks for another guess
+    while len(guess) != 5 or guess not in five_letter_words:
+        guess = guess.lower()
+        if len(guess) < 5 or len(guess) > 5 or guess not in five_letter_words:
+            guess = input('Make sure your guess is five letters long, not a proper noun, and is real. Guess another word: ')
+
+    return guess
 
 def score_guess(guess, solution):
     """
@@ -35,3 +48,4 @@ def score_guess(guess, solution):
     return
 
 generate_word()
+word_guess(five_letter_words)
