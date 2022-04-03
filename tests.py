@@ -12,6 +12,9 @@ def test_score_guess():
 
 def test_generate_best_guesses():
     assert generate_best_guesses(["abcdd", "abcde"]) == ["abcde"]
+    assert generate_best_guesses(["aaaaa", "babab", "abcde", "fffff", "bcdef"]) == ["abcde", "bcdef"]
+    assert generate_best_guesses(["hfhfi", "hhhhh", "hfhfh"]) == ["hfhfi"]
 
-test_score_guess()
+
+# test_score_guess()
 test_generate_best_guesses()
