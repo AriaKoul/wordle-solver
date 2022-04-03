@@ -1,5 +1,9 @@
+from enum import unique
 from english_words import english_words_set
 import random
+from collections import Counter
+import hashlib
+
 
 def generate_list():
     """
@@ -7,13 +11,12 @@ def generate_list():
     This function creates a list full of all five letter words in the English language.
     """
     five_letter_words = []
-    for word in english_words_set:
-        # if len(word) == 4 and word[0].islower():
-        #     five_letter_words.append(f"{word}s")
+    all_words = open('words.txt', 'r')
+    for word in all_words:
+        if "'" not in word:
+            five_letter_words.append(word[0:5])
 
-        if len(word) == 5 and word[0].islower():
-            five_letter_words.append(word)
-    
+    all_words.close()
     return five_letter_words
 
 def generate_word():
@@ -62,19 +65,9 @@ def score_guess(solution, guess):
     print(result)
     return result
 
-
-def generate_possible_solutions(guess_history):
-    """
-    Takes the guess history of the user, which is a dictionary that has the following
-    strucuture: {"guess": "result"}.
-    Based on the result and the guess, this function generates all possible words that 
-    do not violate the criterion from the most recent guess and returns all of these possible 
-    words as a list.
-    """
-    
-    possible_solutions = generate_list()
-    # Iterate over items in guess history to remove invalid words from possible solutions
-    return possible_solutions
+def count_unique_letters(word):
+    unique_letters = len(list(Counter(word).keys()))
+    return unique_letters
 
 def generate_best_guesses(word_list):
     """
@@ -83,8 +76,44 @@ def generate_best_guesses(word_list):
     could lead the user to eventually getting the solution. 
     """
     best_guesses = []
-    # for word in 
+    unique_letter_dict = dict()
+
+    for word in word_list:
+        unique_letter_dict[word] = count_unique_letters(word)
+    max_unique_letters = max(list(unique_letter_dict.values()))
+
+    for key in unique_letter_dict:
+        if unique_letter_dict[key] == max_unique_letters:
+            best_guesses.append(key)
+
     return best_guesses 
 
-  
-score_guess(generate_word(), word_guess()) 
+def generate_possible_solutions(guess_history):
+    """
+    Takes the guess history of the user, which is a dictionary that has the following
+    structure: {"guess": "result"}.
+    Based on the result and the guess, this function generates all possible words that 
+    do not violate the criterion from the most recent guess and returns all of these possible 
+    words as a list.
+    """
+    
+    possible_solutions = generate_list()
+    print(len(possible_solutions))
+    # Iterate over items in guess history to remove invalid words from possible solutions
+    for guess in guess_history:
+        for i in range(len(guess)):
+            if guess_history[guess][i] == 'R':
+                for word in possible_solutions:
+                    if guess[i] in word:
+                        possible_solutions.remove(word)
+            if guess_history[guess][i] == 'G':
+                for word in possible_solutions:
+                    if guess[i] != word[i]:
+                        possible_solutions.remove(word)
+    print(len(possible_solutions))
+    print(possible_solutions)
+    return possible_solutions 
+
+# For this logic, there are some unexpected words in the output
+
+generate_possible_solutions({"white": "RRRRR", "found": "RGGGG", "phone": "RRYGR"})
