@@ -97,8 +97,12 @@ def generate_possible_solutions(guess_history):
     """
     
     possible_solutions = set()
-    all_words_1 = generate_list()
+    # all_words_1 = generate_list()
+    # all_words_2 = all_words_1
+
+    all_words_1 = ['found', 'mound', 'emcee']
     all_words_2 = all_words_1
+
     print(len(possible_solutions))
     # Iterate over items in guess history to remove invalid words from possible solutions
     for guess in guess_history:
