@@ -1,4 +1,3 @@
-from enum import unique
 from english_words import english_words_set
 import random
 from collections import Counter
@@ -97,23 +96,41 @@ def generate_possible_solutions(guess_history):
     words as a list.
     """
     
-    possible_solutions = generate_list()
+    possible_solutions = set()
+    all_words_1 = generate_list()
+    all_words_2 = all_words_1
     print(len(possible_solutions))
     # Iterate over items in guess history to remove invalid words from possible solutions
     for guess in guess_history:
         for i in range(len(guess)):
+            
             if guess_history[guess][i] == 'R':
-                for word in possible_solutions:
-                    if guess[i] in word:
-                        possible_solutions.remove(word)
+                for word in all_words_1:
+                    if guess[i] not in word:
+                        possible_solutions.add(word)
+
             if guess_history[guess][i] == 'G':
-                for word in possible_solutions:
+                for word in all_words_1:
+                    remove = False
                     if guess[i] != word[i]:
-                        possible_solutions.remove(word)
+                        remove = True
+                        try:
+                            all_words_1.remove(word)
+                        except ValueError:
+                            pass
+                    print(f"This is the guess: {guess[i]}")
+                    print(f"This is the word: {word[i]}")
+                    if remove:
+                        print(f"Removed {word}")
+                    else:
+                        print(f"Did not remove {word}")
+
+    possible_solutions.update(all_words_1)
     print(len(possible_solutions))
     print(possible_solutions)
     return possible_solutions 
 
 # For this logic, there are some unexpected words in the output
 
-generate_possible_solutions({"white": "RRRRR", "found": "RGGGG", "phone": "RRYGR"})
+# generate_possible_solutions({"white": "RRRRR", "found": "RGGGG", "phone": "RRYGR"})
+generate_possible_solutions({"found": "GGGGG"})
