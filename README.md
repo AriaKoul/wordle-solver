@@ -14,6 +14,23 @@ Clone this repository using the following code:
 
 
 ## Dependencies
+To execute this code, you will need Python3, and the following Python modules: random and collections.
+
+To install Python, visit [the Python website] (https://www.python.org/downloads/).
+
+To install these modules, use the following commands:
+
+`$ pip install random collections`
 
 ## Descriptions
+`utility_functions.py`
 
+Description here
+
+`words.txt`
+
+Description here
+
+`tests.py`
+
+Description here 
