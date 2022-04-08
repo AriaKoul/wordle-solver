@@ -12,7 +12,6 @@ Clone this repository using the following code:
 
 `$ git clone https://github.com/AriaKoul/wordle-solver`
 
-
 ## Dependencies
 To execute this code, you will need Python3, and the following Python modules: random and collections.
 
@@ -25,12 +24,11 @@ To install these modules, use the following commands:
 ## Descriptions
 `utility_functions.py`
 
-Description here
+This file includes seven different functions which either correspond to creating the actual Wordle game or to solving the game. The functions `generate_list()`, `generate_word()`, and `word_guess()` create the game. The functions `score_guess()`, `count_unique_letters`, `generate_best_guesses`, and `generate_possible_solutions()` solve the game. 
 
 `words.txt`
-
-Description here
+This text file includes a long list of five letter words from the English language that are used to get a solution for each Wordle game and to check that the user gives an actual English five letter word as input for each of their tries. 
 
 `tests.py`
 
-Description here 
+This file contains all of the necessary tests to check if the code is working as expected.  
