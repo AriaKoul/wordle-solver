@@ -27,6 +27,7 @@ To install these modules, use the following commands:
 This file includes seven different functions which either correspond to creating the actual Wordle game or to solving the game. The functions `generate_list()`, `generate_word()`, and `word_guess()` create the game. The functions `score_guess()`, `count_unique_letters`, `generate_best_guesses`, and `generate_possible_solutions()` solve the game. 
 
 `words.txt`
+
 This text file includes a long list of five letter words from the English language that are used to get a solution for each Wordle game and to check that the user gives an actual English five letter word as input for each of their tries. 
 
 `tests.py`
