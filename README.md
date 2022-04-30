@@ -32,4 +32,4 @@ This text file includes a long list of five letter words from the English langua
 
 `tests.py`
 
-This file contains all of the necessary tests to check if the code is working as expected.  
+This file contains all of the necessary tests to check if the code is working the way it is expected to.  
