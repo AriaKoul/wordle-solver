@@ -28,7 +28,7 @@ This file includes seven different functions which either correspond to creating
 
 `words.txt`
 
-This text file includes a long list of five letter words from the English language that are used to get a solution for each Wordle game and to check that the user gives an actual English five letter word as input for each of their tries.
+This text file includes a long list of five letter words from the English language that are used to get a solution for each Wordle game and to check that the user gives an actual English five letter word as input for each of their tries. 
 
 `tests.py`
 
