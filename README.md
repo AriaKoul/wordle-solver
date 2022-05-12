@@ -1,7 +1,7 @@
 # Wordle Solver
 
 ## Background
-The online game Wordle has become one of the most popular games on the internet. The link to play this game is below:
+The online game Wordle has become one of the most popular games on the internet. The link to play this game is below.
 
 [Wordle from the New York Times](https://www.nytimes.com/games/wordle/index.html)
 
